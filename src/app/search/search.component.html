@@ -1,0 +1,9 @@
+Test
+
+<input type="text" [(ngModel)]="searchQuery">
+<button (click)="search()">Search</button>
+ 
+<!-- Display search results -->
+<ul>
+  <li *ngFor="let result of searchResults">{{ result }}</li>
+</ul>    

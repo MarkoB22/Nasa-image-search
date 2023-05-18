@@ -1,7 +1,4 @@
-
-import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import ImagesService from '../service/images.service';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -10,25 +7,14 @@ import ImagesService from '../service/images.service';
 })
 
 export class SearchComponent {
+
   searchQuery: string = '';
-  searchResults: string[] = [];
-  constructor (
 
-    private ImagesService: ImagesService
-
-  ){}
+  @Output() searchEmitter: EventEmitter<string> = new EventEmitter<string>();
 
   search() {
-    // Perform your search logic here, e.g., call an API
-    // and update the searchResults array with the returned data
-    // For simplicity, let's assume we have a hardcoded array of results
-    
-     this.searchResults = [
-       'Result 1',
-       'Result 2',
-       'Result 3'
-     ];
-
-  //  this.searchResults = this.ImagesService.fetchImages;
+    // Emit the searchQuery value to the parent component
+    this.searchEmitter.emit(this.searchQuery);
   }
+
 }

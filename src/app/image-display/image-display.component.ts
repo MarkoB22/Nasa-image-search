@@ -5,7 +5,9 @@ import { Component, Input } from '@angular/core';
   templateUrl: './image-display.component.html',
   styleUrls: ['./image-display.component.css']
 })
+
 export class ImageDisplayComponent {
+
   @Input() searchResults: any[] = [];
 
 }

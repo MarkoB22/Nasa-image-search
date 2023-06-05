@@ -12,30 +12,21 @@ export class SearchComponent {
   constructor(private http: HttpClient) {}
 
   @Input() apiUrl: string = '';
-
+  @Input() mediaType: string = '';
   @Input() input: string = '';
 
   @Output() searchResults: EventEmitter<any[]> = new EventEmitter<any[]>();
 
-  search(searchInput: string): void {
-    this.imageDetails(searchInput)
+  search(): void {
+    this.imageDetails(this.input)
       .subscribe((response: any) => {
-        const results = response.collection.items.map((item: any) => {
-          return {
-            title: item.data[0].title,
-            description: item.data[0].description,
-            image: item.links[0].href,
-            tags: item.data[0].keywords
-          };
-        });
-  
-        this.searchResults.emit(results);
+        this.searchResults.emit(response);
       });
   }
   
-  
   imageDetails(input: string): Observable<any> {
-    const url = `${this.apiUrl}/search?q=${input}&media_type=image`;
+
+    const url = `${this.apiUrl}${input}${this.mediaType}`;
 
     return this.http.get(url);
   }

@@ -1,6 +1,7 @@
 <app-search
-  [apiUrl]="'https://images-api.nasa.gov'"
+  [apiUrl]="'https://images-api.nasa.gov/search?q='"
   [input]="searchInput"
+  [mediaType]="'&media_type=image'"
   (searchResults)="handleSearchResults($event)"
 ></app-search>
 

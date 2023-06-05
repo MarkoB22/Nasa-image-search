@@ -1,10 +1,11 @@
-<div *ngFor="let detail of imageDetails">
-    <h2>{{ detail?.data[0]?.title }}</h2>
-    <img [src]="detail?.links[0]?.href" alt="Image">
-    <p>Tags: {{ detail?.data[0]?.keywords?.join(', ') }}</p>
-    <p>Description: {{ detail?.data[0]?.description }}</p>
+<div class="ResultWrapper" *ngFor="let item of searchResults">
+    <h2>{{ item.title }}</h2>
+    <img class="DisplayImage" [src]="item.image" [alt]="item.title">
+    <span *ngIf="item.tags">
+        <p>Tags:&nbsp;</p>
+    </span>
+    <span *ngFor="let tag of item.tags">
+        <p class="TagContainer"> {{ tag }}&nbsp;</p>
+    </span>
+    <p *ngIf="item.description">Description: {{ item.description }}</p>
 </div>
-  
-<div *ngFor="let detail of imageDetails">
-    <pre>{{ detail | json }}</pre>
-  </div>

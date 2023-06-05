@@ -1,5 +1,10 @@
-<app-search (input)="searchEmitter"></app-search>
-<app-image-display [ImageDetails]="ImageDetails"></app-image-display>
+<app-search
+  [apiUrl]="'https://images-api.nasa.gov'"
+  [input]="searchInput"
+  (searchResults)="handleSearchResults($event)"
+></app-search>
+
+<app-image-display [searchResults]="searchResults"></app-image-display>
   
   
 <router-outlet></router-outlet>

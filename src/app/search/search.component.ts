@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,26 +11,28 @@ import { Observable } from 'rxjs';
 export class SearchComponent {
   constructor(private http: HttpClient) {}
 
-  private apiUrl: string = 'https://images-api.nasa.gov';
-  
-  input: string = '';
-  searchResults: any;
+  @Input() apiUrl: string = '';
 
-  @Output() searchEmitter: EventEmitter<string> = new EventEmitter<string>();
+  @Input() input: string = '';
 
-  search(input: string): void {
-    this.imageDetails(input)
+  @Output() searchResults: EventEmitter<any[]> = new EventEmitter<any[]>();
+
+  search(searchInput: string): void {
+    this.imageDetails(searchInput)
       .subscribe((response: any) => {
-        this.searchResults = response.collection.items.map((item: any) => {
+        const results = response.collection.items.map((item: any) => {
           return {
             title: item.data[0].title,
             description: item.data[0].description,
-            image: item.links[0].href
+            image: item.links[0].href,
+            tags: item.data[0].keywords
           };
         });
+  
+        this.searchResults.emit(results);
       });
-      console.log(this.searchResults);
   }
+  
   
   imageDetails(input: string): Observable<any> {
     const url = `${this.apiUrl}/search?q=${input}&media_type=image`;

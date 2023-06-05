@@ -7,7 +7,6 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ImageDisplayComponent } from './image-display/image-display.component';
-import ImagesService from './service/images.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,7 @@ import ImagesService from './service/images.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ImagesService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

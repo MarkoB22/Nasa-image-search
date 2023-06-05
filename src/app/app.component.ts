@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import ImagesService from './service/images.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +6,11 @@ import ImagesService from './service/images.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  searchResults: any;
+  searchInput: string = '';
 
-  constructor(private imagesService: ImagesService) {}
-
-  searchEmitter: string = '';
-
-  ImageDetails: any[] = [];
-
-  onSearchQueryChange(query: string) {
-    this.searchEmitter = query;
+  handleSearchResults(results: any[]): void {
+    this.searchResults = results;
+    console.log(this.searchResults);
   }
 }

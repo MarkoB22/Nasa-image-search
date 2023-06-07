@@ -1,1 +1,8 @@
-<p>first-result-display works!</p>
+<div *ngIf="result">
+    <app-image-display 
+      [image]="result.image" 
+      [title]="result.title" 
+      [description]="result.description" 
+      [tags]="result.tags"
+    ></app-image-display>
+</div>

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { SearchComponent } from './search/search.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private router: Router) {}
+
+
+  @ViewChild(SearchComponent) searchComponent!: SearchComponent;
+
   searchResults: any[] = [];
   searchInput: string = '';
 
@@ -19,4 +26,12 @@ export class AppComponent {
     }));
   }
 
+  isSearchRoute(): boolean {
+    return this.router.url.includes('item') || this.router.url === '/';
+  }
+
+  isFirstResultRoute(): boolean {
+    return this.router.url.includes('item');
+  }
+  
 }

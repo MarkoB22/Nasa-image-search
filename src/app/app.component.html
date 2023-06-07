@@ -1,9 +1,11 @@
-<app-search
-  [apiUrl]="'https://images-api.nasa.gov/search?q='"
-  [input]="searchInput"
-  [mediaType]="'&media_type=image'"
-  (searchResults)="handleSearchResults($event)"
-></app-search>
+<ng-container *ngIf="isSearchRoute() && !isFirstResultRoute()">
+  <app-search 
+    [apiUrl]="'https://images-api.nasa.gov/search?q='"
+    [input]="searchInput"
+    [mediaType]="'&media_type=image'"
+    (searchResults)="handleSearchResults($event)"
+  ></app-search>
+</ng-container>
 
 <ng-container *ngFor="let result of searchResults">
   <app-image-display

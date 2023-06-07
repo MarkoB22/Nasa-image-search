@@ -1,17 +1,18 @@
-<div class="ResultWrapper" *ngFor="let item of searchResults">
+<div class="ResultWrapper">
 
-    <h2>{{ item?.title }}</h2>
+  <h2>{{ title }}</h2>
 
-    <img class="DisplayImage" [src]="item?.image" [alt]="item?.title">
+  <img class="DisplayImage" [src]="image" [alt]="title">
 
-    <span *ngIf="item?.tags">
-      <p>Tags:&nbsp;</p>
-    </span>
+  <span *ngIf="tags.length">
+    <p>Tags:</p>
 
-    <span >
-      <p  class="TagContainer"> {{ item?.tags }}&nbsp;</p>
-    </span>
+    <ul>
+      <li>{{ tags }}</li>
+    </ul>
 
-    <p *ngIf="item?.description">Description: {{ item?.description }}</p>
+  </span>
+
+  <p *ngIf="description">Description: {{ description }}</p>
 
 </div>

@@ -7,7 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 
 export class ImageDisplayComponent {
-
-  @Input() searchResults: any[] = [];
-
+  @Input() image: string = '';
+  @Input() title: string = '';
+  @Input() tags: string[] = [];
+  @Input() description: string = '';
 }

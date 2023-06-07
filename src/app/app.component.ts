@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   searchResults: any[] = [];
   searchInput: string = '';
-  
+
   handleSearchResults(response: any): void {
     const items = response.collection.items;
     this.searchResults = items.map((item: any) => ({
@@ -18,6 +18,5 @@ export class AppComponent {
       tags: item.data[0].keywords
     }));
   }
-
 
 }

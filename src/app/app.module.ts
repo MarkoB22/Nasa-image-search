@@ -7,12 +7,14 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ImageDisplayComponent } from './image-display/image-display.component';
+import { FirstResultDisplayComponent } from './first-result-display/first-result-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    ImageDisplayComponent
+    ImageDisplayComponent,
+    FirstResultDisplayComponent
   ],
   imports: [
     BrowserModule,

@@ -5,8 +5,14 @@
   (searchResults)="handleSearchResults($event)"
 ></app-search>
 
-<app-image-display [searchResults]="searchResults"></app-image-display>
-  
+<ng-container *ngFor="let result of searchResults">
+  <app-image-display
+    [image]="result?.image"
+    [title]="result?.title"
+    [tags]="result?.tags"
+    [description]="result?.description"
+  ></app-image-display>
+</ng-container>
   
 <router-outlet></router-outlet>
   

@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { ImageDisplayComponent } from './image-display/image-display.component';
 import { FirstResultDisplayComponent } from './first-result-display/first-result-display.component';
+import { SharedService } from './shared.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { FirstResultDisplayComponent } from './first-result-display/first-result
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

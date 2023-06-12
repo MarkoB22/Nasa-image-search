@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +10,10 @@ import { Observable } from 'rxjs';
 })
 
 export class SearchComponent {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private sharedService: SharedService
+    ) {}
 
   @Input() apiUrl: string = '';
   @Input() mediaType: string = '';
@@ -21,6 +25,7 @@ export class SearchComponent {
     this.imageDetails(this.input)
       .subscribe((response: any) => {
         this.searchResults.emit(response);
+        this.sharedService.setSearchResults(response);
       });
   }
   

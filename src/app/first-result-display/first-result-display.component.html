@@ -1,8 +1,8 @@
-<div *ngIf="result">
-    <app-image-display 
-      [image]="result.image" 
-      [title]="result.title" 
-      [description]="result.description" 
-      [tags]="result.tags"
-    ></app-image-display>
+<div>Test image display
+  <app-image-display
+    [image]="result?.image"
+    [title]="result?.title"
+    [tags]="result?.tags"
+    [description]="result?.description"
+  ></app-image-display>
 </div>

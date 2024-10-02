@@ -17,13 +17,13 @@ export class AppComponent {
   searchInput: string = '';
 
   handleSearchResults(response: any): void {
-    const items = response.collection.items;
-    this.searchResults = items.map((item: any) => ({
+    this.searchResults = response.map((item: any) => ({
       title: item.data[0].title,
       description: item.data[0].description,
       image: item.links[0].href,
       tags: item.data[0].keywords
-    }));
+    }))
+
   }
 
   isSearchRoute(): boolean {
@@ -33,5 +33,5 @@ export class AppComponent {
   isFirstResultRoute(): boolean {
     return this.router.url.includes('item');
   }
-  
+
 }
